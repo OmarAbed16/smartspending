@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --mainColor: #4A55A2;
+    --secondColor: #A0BFE0;
+    --whiteColor: #ffffff;
+    --titleColor: #555555;
+    --labelColor: #333333;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(to right, var(--secondColor), var(--mainColor));
+    font-weight: 400;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.form-box {
+    background-color: var(--whiteColor);
+    padding: 2rem 4rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    max-width: 50rem;
+    width: 100%;
+    margin: 2rem;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-header h2 {
+    color: var(--mainColor);
+    font-size: 3.2rem;
+    font-weight: 600;
+}
+
+.contact-form .input-group {
+    margin-bottom: 2rem;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--labelColor);
+    margin-bottom: 0.8rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+    border: 1px solid var(--secondColor);
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--mainColor);
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.submit-btn {
+    text-align: center;
+}
+
+.submit-btn button {
+    padding: 1.5rem 3rem;
+    background: linear-gradient(to right, var(--secondColor), var(--mainColor));
+    color: var(--whiteColor);
+    font-size: 2rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn button:hover {
+    background:linear-gradient(to left, var(--secondColor), var(--mainColor));
+}
+
+
+
+.submit-btn p {
+    padding: 0.5rem 3rem;
+    
+    color: red;
+    font-size: 1.5rem;
+    font-weight: 500;
+
+}
+
+
+@media (max-width: 768px) {
+    .form-box {
+        padding: 3rem;
+    }
+
+    .contact-header h2 {
+        font-size: 2.6rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1.6rem;
+        padding: 1.2rem;
+    }
+
+    .submit-btn button {
+        font-size: 1.8rem;
+        padding: 1.2rem 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-box {
+        padding: 2.5rem;
+    }
+
+    .contact-header h2 {
+        font-size: 2.4rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+
+    .submit-btn button {
+        font-size: 1.6rem;
+        padding: 1rem 2rem;
+    }
+}

@@ -1,0 +1,171 @@
+/*--------------------------------------------------------------
+  # Header
+  --------------------------------------------------------------*/
+
+@media (max-width: 768px) {
+    #header #logo h1 {
+        font-size: 28px;
+        margin-top: 0;
+    }
+
+    #header #logo img {
+        max-height: 40px;
+    }
+}
+
+/*--------------------------------------------------------------
+  # Intro Section
+  --------------------------------------------------------------*/
+
+@media (max-height: 768px) {
+    #intro .intro-text {
+        padding-top: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    #intro .intro-text {
+        padding-top: 180px;
+    }
+}
+
+@media (max-width: 767px) {
+    #intro .intro-text {
+        padding-top: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    #intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+}
+
+#intro p {
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    font-size: 24px;
+}
+
+@media (max-width: 768px) {
+    #intro p {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-height: 768px) {
+    #intro .product-screens {
+        height: 430px;
+    }
+
+    #intro .product-screens .product-screen-1 {
+        height: 400px;
+    }
+
+    #intro .product-screens .product-screen-2 {
+        height: 330px;
+    }
+
+    #intro .product-screens .product-screen-3 {
+        height: 260px;
+    }
+}
+
+@media (max-width: 767px) {
+    #intro .product-screens {
+        height: 400px;
+    }
+
+    #intro .product-screens .product-screen-1 {
+        position: static;
+    }
+
+    #intro .product-screens .product-screen-2,
+    #intro .product-screens .product-screen-3 {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) and (max-height: 639px) {
+    #intro .product-screens {
+        height: 300px;
+    }
+
+    #intro .product-screens .product-screen-1 {
+        position: static;
+    }
+
+    #intro .product-screens .product-screen-2,
+    #intro .product-screens .product-screen-3 {
+        display: none;
+    }
+}
+
+/*--------------------------------------------------------------
+  # Navigation Menu
+  --------------------------------------------------------------*/
+
+@media (max-width: 768px) {
+    #nav-menu-container {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #mobile-nav-toggle {
+        display: inline;
+    }
+}
+
+/*--------------------------------------------------------------
+  # Sections
+  --------------------------------------------------------------*/
+/* Product Featuress Section
+  --------------------------------*/
+@media (min-width: 769px) {
+    #features .features-img {
+        padding-top: 120px;
+        margin-top: -200px;
+    }
+}
+
+/* Product Advanced Featuress Section
+  --------------------------------*/
+
+@media (max-width: 768px) {
+    #advanced-features .advanced-feature-img-right, #advanced-features .advanced-feature-img-left {
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 767px) {
+    #advanced-features .advanced-feature-img-right, #advanced-features .advanced-feature-img-left {
+        max-width: 100%;
+        float: none;
+        padding: 0 0 30px 0;
+    }
+}
+
+/* More Features Section
+  --------------------------------*/
+
+@media (max-width: 767px) {
+    #more-features .box {
+        margin-bottom: 20px;
+    }
+
+    #more-features .icon {
+        float: none;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    #more-features h4, #more-features p {
+        margin-left: 0;
+        text-align: center;
+    }
+}

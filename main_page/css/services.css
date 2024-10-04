@@ -1,0 +1,366 @@
+h2, h3 {
+    font-weight: 500;
+    color: var(--mainColor);
+}
+
+
+
+h2, h3 {
+    text-align: center;
+}
+
+.services-container {
+    background-color: #fff;
+    /* padding: 20px; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(74, 84, 161, 0.5);
+    width: 90%;
+    margin: 20vh auto;
+}
+
+/* Currency Converter */
+.convrt-section {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.converter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 20vw;
+}
+
+.swap-icon {
+    font-size: 30px;
+    cursor:default;
+    margin-top: 30px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    color: var(--mainColor);
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(74, 84, 161, 0.2);
+}
+
+button {
+    background-color: #5b67bf;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.result {
+    align-self: center;
+}
+
+#resultText {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* Budget Tracker */
+.budget-tracker {
+    background-color: rgb(244, 244, 250);
+    width: 100%;
+    padding: 20px;
+}
+
+.budget-content {
+    width: 80%;
+    margin-left: 4vw;
+}
+
+.currency-section {
+    margin-bottom: 20px;
+}
+
+.content, .budget-content {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.income-row, .expense-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 20px ;
+    animation: slideDown 1s linear forwards;
+}
+
+
+@keyframes slideDown {
+    0% {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    100% {
+        max-height: 500px;
+        opacity: 1;
+    }
+}
+
+.income-expense-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.add-btn, .remove-btn {
+    width: 40px;
+    height: 40px;
+    background-color: var(--secondColor);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.remove-btn:hover {
+    background-color: #7ba7d5;
+    transition: all 0.3s ease;
+}
+
+.add-btn {
+    background-color: #5b67bf;
+    transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: var(--mainColor);
+}
+
+#report-btn {
+    padding: 10px;
+    background: linear-gradient(45deg, var(--secondColor), var(--mainColor));
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+#report-btn:hover {
+    transform: scale(1.04);
+}
+
+#report-btn {
+    border-radius: 10px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+#financial-report {
+    display: none;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .swap-icon {
+        transform: rotate(90deg);
+    }
+    input, select {
+        width: 60vw;
+    }
+
+    .converter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-group {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    input, select {
+        width: 60vw;
+    }
+}
+
+/* budgeting section */
+
+.budgeting-container {
+  text-align: center;
+}
+
+.budgeting-container h3 {
+    margin-top: 7vh;
+    color: darkgrey;
+    font-weight: 600;
+}
+
+.budgeting-container .box {
+  padding: 2em;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(74, 84, 161, 0.5);
+  background: #fff;
+  transition: transform 0.4s ease;
+  text-align: center;
+  border-radius: 8px;
+  width: 22vw;
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Start invisible */
+  transform: translateY(20px); /* Start with a slight downward shift */
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.budgeting-container .box .title {
+    font-weight: 500;
+} 
+
+.budgeting-container .box:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.budgeting-container .box:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.budgeting-container .box:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.budgeting-container .box:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.budgeting-container .box:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.budgeting-container .box:hover {
+  transform: translateY(-10px);
+}
+
+.budgeting-container .box h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+  color: var(--mainColor);
+}
+
+.budgeting-container .box p {
+  font-size: 1rem;
+  line-height: 1.4em;
+}
+
+.highlight {
+  color: var(--mainColor);
+  font-weight: bold;
+}
+
+.video-container {
+  margin-top: 2em;
+  text-align: center;
+}
+
+iframe {
+  width: 60%;
+  height: 20em;
+  border: none;
+  border-radius: 0.8em;
+  box-shadow: 0 4px 8px rgba(74, 84, 161, 0.5);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .budgeting-container .box {
+    width: 40vw;
+    height: 30vh;
+    padding: 1.5em;
+  }
+
+  iframe {
+    width: 90%;
+    height: 15em;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .budgeting-container .box h4 {
+    font-size: 1.1rem;
+  }
+
+  .budgeting-container .box p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .budgeting-container .box {
+    width: 80vw;
+    height: 28vh;
+    margin-left: -4vw;
+  }
+
+  iframe {
+    width: 100%;
+    height: 12em;
+  }
+
+  .budgeting-container {
+    padding: 1.5em;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .budgeting-container .box h4 {
+    font-size: 1rem;
+  }
+
+  .budgeting-container .box p {
+    font-size: 0.85rem;
+  }
+}

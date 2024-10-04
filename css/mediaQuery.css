@@ -1,0 +1,128 @@
+/*--------------------------------------------------------------
+  # Header, Intro Section, Navigation Menu, Product Features
+  --------------------------------------------------------------*/
+
+  @media (max-width: 768px) {
+    /* Header */
+    #header #logo h1 {
+        font-size: 28px;
+        margin-top: 0;
+    }
+
+    #header #logo img {
+        max-height: 40px;
+    }
+
+    /* Intro Section */
+    #intro .intro-text {
+        padding-top: 180px; /* Adjusted for mobile and tablet */
+    }
+
+    #intro h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    #intro p {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+
+    #intro .product-screens {
+        height: 400px;
+    }
+
+    #intro .product-screens .product-screen-1 {
+        position: static;
+    }
+
+    #intro .product-screens .product-screen-2,
+    #intro .product-screens .product-screen-3 {
+        display: none;
+    }
+
+    /* Navigation Menu */
+    #nav-menu-container {
+        display: none;
+    }
+
+    #mobile-nav-toggle {
+        display: inline;
+    }
+
+    /* Advanced Features */
+    #advanced-features .advanced-feature-img-right, 
+    #advanced-features .advanced-feature-img-left {
+        max-width: 50%;
+    }
+
+    /* More Features Section */
+    #more-features .box {
+        margin-bottom: 20px;
+    }
+
+    #more-features .icon {
+        float: none;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    #more-features h4, 
+    #more-features p {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Intro Section Adjustments */
+    #intro .intro-text {
+        padding-top: 50px;
+    }
+
+    #advanced-features .advanced-feature-img-right, 
+    #advanced-features .advanced-feature-img-left {
+        max-width: 100%;
+        float: none;
+        padding: 0 0 30px 0;
+    }
+
+    /* Product Screens Adjustments */
+    #intro .product-screens {
+        height: 300px;
+    }
+}
+
+/*--------------------------------------------------------------
+  # Adjustments for max-height 768px
+  --------------------------------------------------------------*/
+
+@media (max-height: 768px) {
+    #intro .intro-text {
+        padding-top: 80px;
+    }
+
+    #intro .product-screens {
+        height: 430px;
+    }
+
+    #intro .product-screens .product-screen-1 {
+        height: 400px;
+    }
+
+    #intro .product-screens .product-screen-2 {
+        height: 330px;
+    }
+
+    #intro .product-screens .product-screen-3 {
+        height: 260px;
+    }
+}
+@media (max-width: 1000px) {
+
+    .edit1{
+        display: flex;
+        padding: 0px;
+    }
+}

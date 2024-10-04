@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Smart Spending | Service</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content name="keywords" />
+    <meta content name="description" />
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon" />
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link rel="shortcut icon" href="imgs/LOGO (3).png" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="lib/aos/aos.css" rel="stylesheet" />
+    <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/mediaQuery.css" />
+    <link rel="stylesheet" href="./css/services.css" />
+  </head>
+
+  <body>
+    <!--==========================
+    Header
+  ============================-->
+    <header id="header">
+      <div class="container">
+        <div id="logo" class="pull-left">
+          <h1>
+            <a href="#intro" class="scrollto" style="font-size: 1.5rem"
+              ><span style="font-weight: bold">SMART</span> spending</a
+            >
+          </h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></img></a> -->
+        </div>
+
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li class="menu-active"><a href="#intro">Home</a></li>
+            <li>
+              <a href="/main_page/services.html" target="_blank">Service</a>
+            </li>
+            <li>
+              <a href="/main_page/aboutUs.html" target="_blank">About Us</a>
+            </li>
+            <li><a href="/ContactUs/" target="_blank">Contact Us</a></li>
+            <li><a href="/auth_check/" target="_blank">Get Started</a></li>
+          </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+      </div>
+    </header>
+    <!-- #header -->
+
+    <!-- Services  -->
+
+    <div class="services-container">
+      <!-- Convert Section -->
+      <div class="convrt-section">
+        <h2>Convert</h2>
+        <div class="content">
+          <div class="converter-row">
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input type="number" id="amount" placeholder="0.00" />
+            </div>
+            <div class="form-group">
+              <label for="fromCurrency">From</label>
+              <select id="fromCurrency"></select>
+            </div>
+            <div class="swap-icon">&#x21c4;</div>
+            <div class="form-group">
+              <label for="toCurrency">To</label>
+              <select id="toCurrency"></select>
+            </div>
+            <button id="convertButton">Convert</button>
+          </div>
+        </div>
+
+        <div class="result">
+          <p id="resultText"></p>
+        </div>
+      </div>
+
+      <!-- Budget Tracker Section -->
+
+      <section class="budget-tracker">
+        <h2>Budget Tracker</h2>
+        <div class="convert-section">
+          <div class="converter-row budget-content">
+            <h4>Currency</h4>
+            <div class="form-group" style="margin-left: 4vw">
+              <label for="currency-select">choose currency</label>
+              <select id="currency-select"></select>
+            </div>
+          </div>
+
+          <div class="income-section">
+            <div class="income-row-wrapper">
+              <div class="converter-row budget-content">
+                <h4>Income</h4>
+                <div class="income-row">
+                  <div class="form-group">
+                    <label for="currency-select">Amount</label>
+                    <input
+                      type="number"
+                      placeholder="Enter Income Amount"
+                      class="income-input"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category">
+                      <option value="salary">Salary</option>
+                      <option value="freelance">Freelance</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="frequency">Income Frequency</label>
+                    <select id="frequency">
+                      <option value="month">Per Month</option>
+                      <option value="week">Per Week</option>
+                      <option value="day">Per Day</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="income-expense-buttons">
+              <button class="add-btn" onclick="addIncomeField()">+</button>
+              <button class="remove-btn" onclick="removeIncomeField()">
+                -
+              </button>
+            </div>
+          </div>
+
+          <div class="expense-section"></div>
+          <div class="expense-row-wrapper">
+            <div class="converter-row budget-content">
+              <h4>Expenses</h4>
+              <div class="expense-row" style="margin-left: -0.5vw">
+                <div class="form-group">
+                  <label for="currency-select">Amount</label>
+                  <input
+                    type="number"
+                    placeholder="Enter Income Amount"
+                    class="expense-input"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="category">Category</label>
+                  <select id="category">
+                    <option value="salary">Salary</option>
+                    <option value="freelance">Freelance</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="expense-frequency">Expense Frequency</label>
+                  <select id="expense-frequency">
+                    <option value="month">Per Month</option>
+                    <option value="week">Per Week</option>
+                    <option value="day">Per Day</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="income-expense-buttons">
+            <button class="add-btn" onclick="addExpenseField()">+</button>
+            <button class="remove-btn" onclick="removeExpenseField()">-</button>
+          </div>
+          <button id="report-btn" onclick="showReport()">
+            Show Financial Report
+          </button>
+
+          <div id="financial-report"></div>
+        </div>
+      </section>
+
+      <!-- Budgeting Section -->
+      <section class="budgeting-section py-5">
+        <div class="container">
+          <div class="budgeting-container">
+            <h2>Budgeting: The Key to Financial Success</h2>
+            <p>
+              <span class="highlight">Budgeting</span> is a powerful way to take
+              control of your finances. It helps you manage income, track
+              expenses, and save more. By knowing where your money goes, you can
+              cut non-essential expenses and increase savings.
+            </p>
+            <p>
+              <span class="highlight">Spend Smarter</span> to build a stronger,
+              more successful financial future!<br />
+              Discover more insights in the video below!
+            </p>
+
+            <div class="video-container my-4">
+              <iframe
+                src="https://www.youtube.com/embed/j1Vwth0B8I8"
+                title="Budgeting Tips Video"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <!-- Tips Section -->
+            <h3>5 Tips for Financial Success</h3>
+            <div class="row justify-content-center">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="box" data-aos="fade-up">
+                  <h4 class="title">1. Track your spending</h4>
+                  <p class="description">
+                    Document all expenses, daily and long-term, to create a
+                    clear financial plan for better money management.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="box" data-aos="fade-up">
+                  <h4 class="title">2. Analyze your habits</h4>
+                  <p class="description">
+                    Identify patterns, like over-reliance on credit or unused
+                    subscriptions, and how they impact your financial
+                    well-being.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="box" data-aos="fade-up">
+                  <h4 class="title">3. Set your goals</h4>
+                  <p class="description">
+                    Set short-term and long-term goals, align your spending to
+                    achieve them, and plan for future milestones.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="box" data-aos="fade-up">
+                  <h4 class="title">4. Create a plan</h4>
+                  <p class="description">
+                    Prioritize debt repayment, cut unnecessary spending, and
+                    boost income to reach your goals faster.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="box" data-aos="fade-up">
+                  <h4 class="title">5. Lather, rinse, repeat</h4>
+                  <p class="description">
+                    Master personal finance through continuous tracking,
+                    planning, and adapting to changes for a brighter financial
+                    future.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!--==========================
+    Footer
+  ============================-->
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 text-md-left text-center">
+            <div class="credits">
+              Designed by
+              <span style="color: #4a55a2">Smart Spending Team</span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 text-center">
+            <div class="copyright">
+              &copy; Copyright <strong>Avilon</strong>. All Rights Reserved
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 text-md-right text-center">
+            <div class="contact-info">
+              <a href="mailto:info@smartspending.com">info@smartspending.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/aos/aos.js"></script>
+    <script src="lib/superfish/hoverIntent.js"></script>
+    <script src="lib/superfish/superfish.min.js"></script>
+    <script src="lib/magnific-popup/magnific-popup.min.js"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
+    <script src="./js/services.js"></script>
+  </body>
+</html>
