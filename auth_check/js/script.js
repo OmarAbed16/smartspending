@@ -59,8 +59,8 @@ function logup(event, us, em, pass, passMatch) {
   users.push(newUser);
   localStorage.setItem("users", JSON.stringify(users));
   signupErrorMessage.textContent = "";
+  localStorage.setItem("current_user", newUser.email);
   console.log("Signup successful!", newUser);
-  localStorage.setItem("current_user", email);
   window.location.href = "../main_page/services.html";
 }
 
