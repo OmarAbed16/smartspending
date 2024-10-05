@@ -1,3 +1,9 @@
+if (!localStorage.getItem("current_user")) {
+  window.location.href = "../auth_check";
+}
+let current_user = localStorage.getItem("current_user");
+console.log(current_user);
+
 //-------- Currency Converter Section----------
 const apiUrl = "https://restcountries.com/v3.1/all";
 const exchangeApiUrl = "https://open.er-api.com/v6/latest/";
@@ -78,7 +84,9 @@ let incomeData = [];
 let expenseData = [];
 
 // Event listener for the Save button
-document.getElementById("save-btn").addEventListener("click", saveDataToLocalStorage);
+document
+  .getElementById("save-btn")
+  .addEventListener("click", saveDataToLocalStorage);
 
 // Function to add income field and update local storage
 function addIncomeField(amount = "", category = "salary", frequency = "month") {
@@ -149,8 +157,12 @@ function removeIncomeField() {
   }
 }
 
-// Function to add expense field 
-function addExpenseField(amount = "",category = "salary",frequency = "month") {
+// Function to add expense field
+function addExpenseField(
+  amount = "",
+  category = "salary",
+  frequency = "month"
+) {
   let expenseWrapper = document.querySelector(".expense-row-wrapper");
   let newExpenseRow = document.createElement("div");
   newExpenseRow.classList.add("expense-row");
@@ -205,7 +217,7 @@ function removeExpenseField() {
 // Function to save data to local storage
 function saveDataToLocalStorage() {
   incomeData = []; // Clear existing data
-  expenseData = []; 
+  expenseData = [];
 
   storeIncomeData(); // Collect and save income data
   storeExpenseData(); // Collect and save expense data
@@ -222,7 +234,7 @@ function storeIncomeData() {
     let category = row.querySelector(".category").value; // Updated selector to class
     let frequency = row.querySelector(".income-frequency").value;
     if (amount) {
-      incomeData.push({ amount, category, frequency });
+      incomeData.push({ amount, category, frequency, current_user });
     }
   });
 }
@@ -235,7 +247,7 @@ function storeExpenseData() {
     let category = row.querySelector(".category").value; // Updated selector to class
     let frequency = row.querySelector(".expense-frequency").value;
     if (amount) {
-      expenseData.push({ amount, category, frequency });
+      expenseData.push({ amount, category, frequency, current_user });
     }
   });
 }
@@ -245,10 +257,18 @@ function loadDataFromLocalStorage() {
   let savedIncomeData = JSON.parse(localStorage.getItem("incomeData")) || [];
   let savedExpenseData = JSON.parse(localStorage.getItem("expenseData")) || [];
 
-  savedIncomeData.forEach((data) =>
+  let filteredIncomeData = savedIncomeData.filter(
+    (data) => data.current_user === current_user
+  );
+  let filteredExpenseData = savedExpenseData.filter(
+    (data) => data.current_user === current_user
+  );
+
+  filteredIncomeData.forEach((data) =>
     addIncomeField(data.amount, data.category, data.frequency)
   );
-  savedExpenseData.forEach((data) =>
+
+  filteredExpenseData.forEach((data) =>
     addExpenseField(data.amount, data.category, data.frequency)
   );
 }
