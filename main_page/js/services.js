@@ -215,12 +215,22 @@ function removeExpenseField() {
 }
 
 // Function to save data to local storage
-function saveDataToLocalStorage() {
-  incomeData = []; // Clear existing data
-  expenseData = [];
+function saveDataToLocalStorage(currentUser) {
+  let incomeData = JSON.parse(localStorage.getItem("incomeData")) || [];
+  let expenseData = JSON.parse(localStorage.getItem("expenseData")) || [];
 
-  storeIncomeData(); // Collect and save income data
-  storeExpenseData(); // Collect and save expense data
+  let filteredIncomeData = incomeData.filter(
+    (item) => item.current_user !== currentUser
+  );
+  let filteredExpenseData = expenseData.filter(
+    (item) => item.current_user !== currentUser
+  );
+
+  incomeData = [...filteredIncomeData];
+  expenseData = [...filteredExpenseData];
+
+  storeIncomeData();
+  storeExpenseData();
 
   localStorage.setItem("incomeData", JSON.stringify(incomeData));
   localStorage.setItem("expenseData", JSON.stringify(expenseData));
