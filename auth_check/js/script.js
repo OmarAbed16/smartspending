@@ -63,7 +63,7 @@ function logup(event, us, em, pass, passMatch) {
   localStorage.setItem("users", JSON.stringify(users));
   signupErrorMessage.textContent = "";
   console.log("Signup successful!", newUser);
-  window.location.href = "../../main_page/services.html";
+  window.location.href = "../main_page/services.html";
 }
 
 function login(event, em, pw) {
@@ -85,7 +85,7 @@ function login(event, em, pw) {
   if (user) {
     console.log("Login successful!", user);
     loginErrorMessage.textContent = "";
-    window.location.href = "../../main_page/services.html";
+    window.location.href = "../main_page/services.html";
   } else {
     loginErrorMessage.textContent = "Invalid email or password";
   }

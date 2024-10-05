@@ -1,0 +1,35 @@
+{
+  "currencies": [
+    { "name": "Euro", "price": "1.18", "currencyCode": "EUR", "change": -0.12 },
+    {
+      "name": "US Dollar",
+      "price": "1.00",
+      "currencyCode": "USD",
+      "change": 0.0
+    },
+    {
+      "name": "Kuwaiti Dinar",
+      "price": "3.29",
+      "currencyCode": "KWD",
+      "change": 0.45
+    },
+    {
+      "name": "Jordanian Dinar",
+      "price": "1.41",
+      "currencyCode": "JOD",
+      "change": 0.32
+    },
+    {
+      "name": "Saudi Riyal",
+      "price": "3.75",
+      "currencyCode": "SAR",
+      "change": 0.1
+    },
+    {
+      "name": "Egyptian Pound",
+      "price": "0.064",
+      "currencyCode": "EGP",
+      "change": -0.25
+    }
+  ]
+}

@@ -10,7 +10,7 @@
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon" />
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
-    <link rel="shortcut icon" href="imgs/LOGO (3).png" />
+
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i"
@@ -39,11 +39,7 @@
     <header id="header">
       <div class="container">
         <div id="logo" class="pull-left">
-          <h1>
-            <a href="#intro" class="scrollto" style="font-size: 1.5rem"
-              ><span style="font-weight: bold">SMART</span> spending</a
-            >
-          </h1>
+          <h1><a href="#intro" class="scrollto">Logo</a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></img></a> -->
         </div>
@@ -52,13 +48,13 @@
           <ul class="nav-menu">
             <li class="menu-active"><a href="#intro">Home</a></li>
             <li>
-              <a href="/main_page/services.html" target="_blank">Service</a>
+              <a href="services.html" target="_blank">Service</a>
             </li>
             <li>
-              <a href="/main_page/aboutUs.html" target="_blank">About Us</a>
+              <a href="aboutUs.html" target="_blank">About Us</a>
             </li>
-            <li><a href="/ContactUs/" target="_blank">Contact Us</a></li>
-            <li><a href="/auth_check/" target="_blank">Get Started</a></li>
+            <li><a href="../ContactUs/" target="_blank">Contact Us</a></li>
+            <li><a href="../auth_check/" target="_blank">Get Started</a></li>
           </ul>
         </nav>
         <!-- #nav-menu-container -->
@@ -71,7 +67,7 @@
     <div class="services-container">
       <!-- Convert Section -->
       <div class="convrt-section">
-        <h2>Convert</h2>
+        <h2>Convert Currency</h2>
         <div class="content">
           <div class="converter-row">
             <div class="form-group">
@@ -101,14 +97,6 @@
       <section class="budget-tracker">
         <h2>Budget Tracker</h2>
         <div class="convert-section">
-          <div class="converter-row budget-content">
-            <h4>Currency</h4>
-            <div class="form-group" style="margin-left: 4vw">
-              <label for="currency-select">choose currency</label>
-              <select id="currency-select"></select>
-            </div>
-          </div>
-
           <div class="income-section">
             <div class="income-row-wrapper">
               <div class="converter-row budget-content">
@@ -125,15 +113,19 @@
 
                   <div class="form-group">
                     <label for="category">Category</label>
-                    <select id="category">
+                    <select class="category">
                       <option value="salary">Salary</option>
-                      <option value="freelance">Freelance</option>
+                      <option value="business">Business</option>
+                      <option value="investment ">Investment</option>
+                      <option value="rental-income">Rental Income</option>
+                      <option value="commission ">Commission</option>
+                      <option value="interest-income ">Interest Income</option>
                     </select>
                   </div>
 
                   <div class="form-group">
                     <label for="frequency">Income Frequency</label>
-                    <select id="frequency">
+                    <select class="income-frequency">
                       <option value="month">Per Month</option>
                       <option value="week">Per Week</option>
                       <option value="day">Per Day</option>
@@ -150,48 +142,83 @@
             </div>
           </div>
 
-          <div class="expense-section"></div>
-          <div class="expense-row-wrapper">
-            <div class="converter-row budget-content">
-              <h4>Expenses</h4>
-              <div class="expense-row" style="margin-left: -0.5vw">
-                <div class="form-group">
-                  <label for="currency-select">Amount</label>
-                  <input
-                    type="number"
-                    placeholder="Enter Income Amount"
-                    class="expense-input"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="category">Category</label>
-                  <select id="category">
-                    <option value="salary">Salary</option>
-                    <option value="freelance">Freelance</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="expense-frequency">Expense Frequency</label>
-                  <select id="expense-frequency">
-                    <option value="month">Per Month</option>
-                    <option value="week">Per Week</option>
-                    <option value="day">Per Day</option>
-                  </select>
+          <div class="expense-section">
+            <div class="expense-row-wrapper">
+              <div class="converter-row budget-content">
+                <h4>Expenses</h4>
+                <div class="expense-row" style="margin-left: -0.5vw">
+                  <div class="form-group">
+                    <label for="currency-select">Amount</label>
+                    <input
+                      type="number"
+                      placeholder="Enter Expense Amount"
+                      class="expense-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="category">
+                      <option value="groceries">Groceries</option>
+                      <option value="housing">Housing</option>
+                      <option value="utilities">Utilities</option>
+                      <option value="transportation">Transportation</option>
+                      <option value="healthcare">Healthcare</option>
+                      <option value="education">Education</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="expense-frequency">Expense Frequency</label>
+                    <select class="expense-frequency">
+                      <option value="month">Per Month</option>
+                      <option value="week">Per Week</option>
+                      <option value="day">Per Day</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <div class="income-expense-buttons">
+              <button class="add-btn" onclick="addExpenseField()">+</button>
+              <button class="remove-btn" onclick="removeExpenseField()">
+                -
+              </button>
+            </div>
           </div>
-          <div class="income-expense-buttons">
-            <button class="add-btn" onclick="addExpenseField()">+</button>
-            <button class="remove-btn" onclick="removeExpenseField()">-</button>
+
+          <div class="save-btn-container">
+            <button id="save-btn">Save</button>
           </div>
+
           <button id="report-btn" onclick="showReport()">
             Show Financial Report
           </button>
 
-          <div id="financial-report"></div>
+          <div id="financial-report">
+            <div class="financial-content">
+              <div
+                class="header"
+                style="text-align: center; margin-bottom: 20px"
+              >
+                <h2>Monthly Financial Report</h2>
+              </div>
+
+              <div class="financial-analysis">
+                <canvas id="financial-circle" width="200" height="200"></canvas>
+                <div style="margin-left: 20px">
+                  <p>Total Income: <span id="total-income"></span></p>
+                  <p>
+                    <span class="circle-indicator red"></span>
+                    Total Expenses: <span id="total-expenses"></span>
+                  </p>
+                  <p>
+                    <span class="circle-indicator green"></span>
+                    Savings: <span id="savings"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

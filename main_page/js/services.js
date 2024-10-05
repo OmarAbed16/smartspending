@@ -35,8 +35,7 @@ function populateDropdowns(countries) {
       option.innerHTML = `${country.name.common} - ${currencyCode}`;
       // used cloneNode beacause we have to put the same options in "From" and "To" drop-down, it creates a copy of the original option so that it can be added to the "From" dropdown without being removed from the "To" dropdown.
       fromCurrency.appendChild(option.cloneNode(true));
-      toCurrency.appendChild(option.cloneNode(true));
-      currencySelect.appendChild(option);
+      toCurrency.appendChild(option);
     }
   });
 }
@@ -75,48 +74,71 @@ document
 fetchCurrencies();
 
 //-----Budget Tracker Section--------\
-
 let incomeData = [];
 let expenseData = [];
 
+// Event listener for the Save button
+document.getElementById("save-btn").addEventListener("click", saveDataToLocalStorage);
+
 // Function to add income field and update local storage
-function addIncomeField(amount = '', category = 'salary', frequency = 'month') {
+function addIncomeField(amount = "", category = "salary", frequency = "month") {
   let incomeWrapper = document.querySelector(".income-row-wrapper");
   let newIncomeRow = document.createElement("div");
   newIncomeRow.classList.add("income-row");
   newIncomeRow.innerHTML = `
         <div class="converter-row budget-content">
-                                <div class="income-row" style= "margin-left : -0.001vw;">
-                                    <div class="form-group">
-                                        <label
-                                            for="currency-select">Amount</label>
-                                        <input type="number"
-                                            placeholder="Enter Income Amount"
-                                            class="income-input" value="${amount}">
-                                    </div>
+            <div class="income-row" style="margin-left: -0.001vw;">
+                <div class="form-group">
+                    <label for="currency-select">Amount</label>
+                    <input type="number" placeholder="Enter Income Amount" class="income-input" value="${amount}">
+                </div>
 
-                                    <div class="form-group">
-                                        <label for="category">Category</label>
-                                        <select id="category">
-                                            <option value="salary" ${category === 'salary' ? 'selected' : ''}>Salary</option>
-                                            <option value="freelance" ${category === 'freelance' ? 'selected' : ''}>Freelance</option>
-                                        </select>
-                                    </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="category"> 
+                        <option value="salary" ${
+                          frequency === "salary" ? "selected" : ""
+                        }>Salary</option>
+                        <option value="freelance" ${
+                          frequency === "freelance" ? "selected" : ""
+                        }>Freelance</option>
+                        <option value="business" ${
+                          frequency === "business" ? "selected" : ""
+                        }>Business</option>
+                        <option value="investment" ${
+                          frequency === "investment" ? "selected" : ""
+                        }>Investment </option>
+                        <option value="rental-income" ${
+                          frequency === "rental-income" ? "selected" : ""
+                        }>Rental Income</option>
+                        <option value="commission " ${
+                          frequency === "commission" ? "selected" : ""
+                        }>Commission</option>
+                        <option value="interest-income" ${
+                          frequency === "interest-income" ? "selected" : ""
+                        }>Interest Income</option>
+                    </select>
+                </div>
 
-                                    <div class="form-group">
-                                        <label for="frequency">Income Frequency</label>
-                                        <select id="frequency">
-                                            <option value="month" ${frequency === 'month' ? 'selected' : ''}>Per Month</option>
-                                            <option value="week" ${frequency === 'week' ? 'selected' : ''}>Per Week</option>
-                                            <option value="day" ${frequency === 'day' ? 'selected' : ''}>Per Day</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="form-group">
+                    <label for="frequency">Income Frequency</label>
+                    <select class="income-frequency">
+                        <option value="month" ${
+                          frequency === "month" ? "selected" : ""
+                        }>Per Month</option>
+                        <option value="week" ${
+                          frequency === "week" ? "selected" : ""
+                        }>Per Week</option>
+                        <option value="day" ${
+                          frequency === "day" ? "selected" : ""
+                        }>Per Day</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     `;
   newIncomeRow.style.marginTop = "-3vh";
   incomeWrapper.appendChild(newIncomeRow);
-  updateLocalStorage();
 }
 
 // Function to remove income field and update local storage
@@ -124,47 +146,52 @@ function removeIncomeField() {
   let incomeWrapper = document.querySelector(".income-row-wrapper");
   if (incomeWrapper.children.length > 1) {
     incomeWrapper.removeChild(incomeWrapper.lastChild);
-    updateLocalStorage();
   }
 }
 
-// Function to add expense field and update local storage
-function addExpenseField(amount = '', category = 'salary', frequency = 'month') {
+// Function to add expense field 
+function addExpenseField(amount = "",category = "salary",frequency = "month") {
   let expenseWrapper = document.querySelector(".expense-row-wrapper");
   let newExpenseRow = document.createElement("div");
   newExpenseRow.classList.add("expense-row");
   newExpenseRow.innerHTML = `
         <div class="converter-row budget-content">
-                            <div class="expense-row" style="margin-left: -0.1vw;">
-                                <div class="form-group">
-                                    <label
-                                        for="currency-select">Amount</label>
-                                    <input type="number"
-                                        placeholder="Enter Expense Amount"
-                                        class="expense-input" value="${amount}">
-                                </div>
+            <div class="expense-row" style="margin-left: -0.1vw;">
+                <div class="form-group">
+                    <label for="currency-select">Amount</label>
+                    <input type="number" placeholder="Enter Expense Amount" class="expense-input" value="${amount}">
+                </div>
 
-                                <div class="form-group">
-                                    <label for="category">Category</label>
-                                    <select id="category">
-                                        <option value="salary" ${category === 'salary' ? 'selected' : ''}>Salary</option>
-                                        <option value="freelance" ${category === 'freelance' ? 'selected' : ''}>Freelance</option>
-                                    </select>
-                                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="category">
+                        <option value="groceries">Groceries</option>
+                        <option value="housing">Housing</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="education">Education</option>
+                    </select>
+                </div>
 
-                                <div class="form-group">
-                                    <label for="expense-frequency">Expense Frequency</label>
-                                    <select id="expense-frequency">
-                                        <option value="month" ${frequency === 'month' ? 'selected' : ''}>Per Month</option>
-                                        <option value="week" ${frequency === 'week' ? 'selected' : ''}>Per Week</option>
-                                        <option value="day" ${frequency === 'day' ? 'selected' : ''}>Per Day</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                <div class="form-group">
+                    <label for="expense-frequency">Expense Frequency</label>
+                    <select class="expense-frequency">
+                        <option value="month" ${
+                          frequency === "month" ? "selected" : ""
+                        }>Per Month</option>
+                        <option value="week" ${
+                          frequency === "week" ? "selected" : ""
+                        }>Per Week</option>
+                        <option value="day" ${
+                          frequency === "day" ? "selected" : ""
+                        }>Per Day</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     `;
   expenseWrapper.appendChild(newExpenseRow);
-  updateLocalStorage();
 }
 
 // Function to remove expense field and update local storage
@@ -172,25 +199,28 @@ function removeExpenseField() {
   let expenseWrapper = document.querySelector(".expense-row-wrapper");
   if (expenseWrapper.children.length > 1) {
     expenseWrapper.removeChild(expenseWrapper.lastChild);
-    updateLocalStorage();
   }
 }
 
 // Function to save data to local storage
 function saveDataToLocalStorage() {
+  incomeData = []; // Clear existing data
+  expenseData = []; 
+
   storeIncomeData(); // Collect and save income data
   storeExpenseData(); // Collect and save expense data
-  localStorage.setItem('incomeData', JSON.stringify(incomeData));
-  localStorage.setItem('expenseData', JSON.stringify(expenseData));
+
+  localStorage.setItem("incomeData", JSON.stringify(incomeData));
+  localStorage.setItem("expenseData", JSON.stringify(expenseData));
 }
 
 // Function to store income data
 function storeIncomeData() {
   incomeData = [];
-  document.querySelectorAll('.income-row').forEach(row => {
-    let amount = row.querySelector('.income-input').value;
-    let category = row.querySelector('#category').value;
-    let frequency = row.querySelector('#frequency').value;
+  document.querySelectorAll(".income-row").forEach((row) => {
+    let amount = row.querySelector(".income-input").value;
+    let category = row.querySelector(".category").value; // Updated selector to class
+    let frequency = row.querySelector(".income-frequency").value;
     if (amount) {
       incomeData.push({ amount, category, frequency });
     }
@@ -200,10 +230,10 @@ function storeIncomeData() {
 // Function to store expense data
 function storeExpenseData() {
   expenseData = [];
-  document.querySelectorAll('.expense-row').forEach(row => {
-    let amount = row.querySelector('.expense-input').value;
-    let category = row.querySelector('#category').value;
-    let frequency = row.querySelector('#expense-frequency').value;
+  document.querySelectorAll(".expense-row").forEach((row) => {
+    let amount = row.querySelector(".expense-input").value;
+    let category = row.querySelector(".category").value; // Updated selector to class
+    let frequency = row.querySelector(".expense-frequency").value;
     if (amount) {
       expenseData.push({ amount, category, frequency });
     }
@@ -212,54 +242,58 @@ function storeExpenseData() {
 
 // Function to load data from local storage
 function loadDataFromLocalStorage() {
-  let savedIncomeData = JSON.parse(localStorage.getItem('incomeData')) || [];
-  let savedExpenseData = JSON.parse(localStorage.getItem('expenseData')) || [];
+  let savedIncomeData = JSON.parse(localStorage.getItem("incomeData")) || [];
+  let savedExpenseData = JSON.parse(localStorage.getItem("expenseData")) || [];
 
-  savedIncomeData.forEach(data => addIncomeField(data.amount, data.category, data.frequency));
-  savedExpenseData.forEach(data => addExpenseField(data.amount, data.category, data.frequency));
+  savedIncomeData.forEach((data) =>
+    addIncomeField(data.amount, data.category, data.frequency)
+  );
+  savedExpenseData.forEach((data) =>
+    addExpenseField(data.amount, data.category, data.frequency)
+  );
 }
 
-// Function to update local storage whenever data changes
-function updateLocalStorage() {
-  saveDataToLocalStorage();
-}
-
-// Function to display financial report
+// Function to display financial report and draw the circle
 function showReport() {
   let incomeInputs = document.querySelectorAll(".income-input");
   let expenseInputs = document.querySelectorAll(".expense-input");
-  const incomeFrequency = document.getElementById("frequency").value;
-  const expenseFrequency = document.getElementById("expense-frequency").value;
+  let incomeFrequencies = document.querySelectorAll(".income-frequency");
+  let expenseFrequencies = document.querySelectorAll(".expense-frequency");
 
-  let totalIncome = 0, totalExpenses = 0;
+  let totalIncome = 0,
+    totalExpenses = 0;
 
-  incomeInputs.forEach((input) => {
+  incomeInputs.forEach((input, index) => {
     if (input.value) {
-      switch (incomeFrequency) {
+      let value = parseFloat(input.value);
+      let frequency = incomeFrequencies[index].value;
+      switch (frequency) {
         case "month":
-          totalIncome += parseFloat(input.value);
+          totalIncome += value;
           break;
         case "week":
-          totalIncome += 4 * parseFloat(input.value);
+          totalIncome += value * 4; // Convert weekly to monthly
           break;
         case "day":
-          totalIncome += 30 * parseFloat(input.value);
+          totalIncome += value * 30; // Convert daily to monthly
           break;
       }
     }
   });
 
-  expenseInputs.forEach((input) => {
+  expenseInputs.forEach((input, index) => {
     if (input.value) {
-      switch (expenseFrequency) {
+      let value = parseFloat(input.value);
+      let frequency = expenseFrequencies[index].value;
+      switch (frequency) {
         case "month":
-          totalExpenses += parseFloat(input.value);
+          totalExpenses += value;
           break;
         case "week":
-          totalExpenses += 4 * parseFloat(input.value);
+          totalExpenses += value * 4; // Convert weekly to monthly
           break;
         case "day":
-          totalExpenses += 30 * parseFloat(input.value);
+          totalExpenses += value * 30; // Convert daily to monthly
           break;
       }
     }
@@ -267,15 +301,119 @@ function showReport() {
 
   let savings = totalIncome - totalExpenses;
 
+  if (totalIncome === 0) {
+    alert("Total income cannot be zero.");
+    return;
+  }
+
+  document.getElementById("total-income").innerText = totalIncome.toFixed(2);
+  document.getElementById("total-expenses").innerText =
+    totalExpenses.toFixed(2);
+  document.getElementById("savings").innerText = savings.toFixed(2);
+
   let reportDiv = document.getElementById("financial-report");
-  reportDiv.innerHTML = `
-    <h3>Financial Report</h3>
-    <p>Total Income: $${totalIncome.toFixed(2)}</p>
-    <p>Total Expenses: $${totalExpenses.toFixed(2)}</p>
-    <p>Savings: $${savings.toFixed(2)}</p>
-  `;
-  reportDiv.style.display = "block";
+  reportDiv.style.display = "flex";
+
+  drawFinancialCircle(totalIncome, totalExpenses, savings);
 }
 
-// Call loadDataFromLocalStorage on page load
-window.onload = loadDataFromLocalStorage;
+// Function to draw the circle with animation
+function drawFinancialCircle(totalIncome, totalExpenses, savings) {
+  let canvas = document.getElementById("financial-circle");
+  let ctx = canvas.getContext("2d");
+  let centerX = canvas.width / 2;
+  let centerY = canvas.height / 2;
+  let radius = 80;
+  let lineWidth = 20;
+
+  // Clear the canvas before drawing
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Total Income (full circle background)
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+  ctx.lineWidth = lineWidth;
+  ctx.strokeStyle = "#0f9d58"; // Light color representing total income
+  ctx.stroke();
+
+  // Calculate the angles for expenses and savings
+  let expenseAngle = (totalExpenses / totalIncome) * 2 * Math.PI;
+  let savingsAngle = (savings / totalIncome) * 2 * Math.PI;
+
+  let startAngle = -Math.PI / 2;
+
+  // Animate Expenses
+  let currentExpenseAngle = 0;
+  let expenseAnimation = setInterval(() => {
+    ctx.beginPath();
+    ctx.arc(
+      centerX,
+      centerY,
+      radius,
+      startAngle,
+      startAngle + currentExpenseAngle
+    );
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = "#db4437"; // Red for expenses
+    ctx.stroke();
+
+    currentExpenseAngle += 0.01; // Increase the angle gradually
+    if (currentExpenseAngle >= expenseAngle) {
+      clearInterval(expenseAnimation);
+      animateSavings(
+        startAngle + currentExpenseAngle,
+        savingsAngle,
+        centerX,
+        centerY,
+        radius,
+        lineWidth,
+        ctx,
+        totalIncome // Pass totalIncome as a parameter
+      );
+    }
+  }, 10);
+}
+
+function animateSavings(
+  startAngle,
+  savingsAngle,
+  centerX,
+  centerY,
+  radius,
+  lineWidth,
+  ctx,
+  totalIncome // Accept totalIncome as a parameter
+) {
+  let currentSavingsAngle = 0;
+  let savingsAnimation = setInterval(() => {
+    ctx.beginPath();
+    ctx.arc(
+      centerX,
+      centerY,
+      radius,
+      startAngle,
+      startAngle + currentSavingsAngle
+    );
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = "#0f9d58"; // Green for savings
+    ctx.stroke();
+
+    currentSavingsAngle += 0.01; // Increase the angle gradually
+    if (currentSavingsAngle >= savingsAngle) {
+      clearInterval(savingsAnimation);
+      displayTotalIncome(centerX, centerY, totalIncome, ctx); // totalIncome is now defined
+    }
+  }, 10);
+}
+
+function displayTotalIncome(centerX, centerY, totalIncome, ctx) {
+  // Display total income in the center of the circle
+  ctx.font = "bold 20px Arial";
+  ctx.fillStyle = "#000";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(`${totalIncome.toFixed(2)}`, centerX, centerY);
+}
+
+// Load data when the page is loaded
+document.addEventListener("DOMContentLoaded", loadDataFromLocalStorage);

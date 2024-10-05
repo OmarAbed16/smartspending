@@ -98,10 +98,6 @@ button {
     margin-left: 4vw;
 }
 
-.currency-section {
-    margin-bottom: 20px;
-}
-
 .content, .budget-content {
     display: flex;
     justify-content: flex-start;
@@ -156,7 +152,15 @@ button {
 .add-btn:hover {
     background-color: var(--mainColor);
 }
-
+.save-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#save-btn {
+  margin: 10px;
+  
+}
 #report-btn {
     padding: 10px;
     background: linear-gradient(45deg, var(--secondColor), var(--mainColor));
@@ -185,6 +189,37 @@ button {
     border-radius: 10px;
     text-align: center;
     animation: fadeIn 1s ease-in-out;
+}
+
+.financial-content {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+}
+
+.financial-analysis {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    align-self: center;
+}
+
+.circle-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.red {
+    background-color: #db4437; /* Red for expenses */
+}
+
+.green {
+    background-color: #0f9d58; /* Green for savings */
 }
 
 @keyframes fadeIn {
