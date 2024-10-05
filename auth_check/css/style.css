@@ -106,22 +106,7 @@ form .form-group input:valid~i {
     font-size: 1.2rem !important;
     background-color: var(--whiteColor);
 }
-/*
-.wrapper .form-container form .forgot-pass {
-    margin: -1.5rem 0 1.5rem;
-}
 
-.wrapper .form-container form .forgot-pass a {
-    color: var(--labelColor);
-    text-decoration: none;
-    font-size: 1.4rem;
-    text-transform: capitalize;
-    transform: all .5s ease;
-}
-
-.wrapper .form-container form .forgot-pass a:hover {
-    color: var(--mainColor);
-}*/
 .error{
     color: red;
 }
